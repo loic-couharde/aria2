@@ -1,0 +1,14 @@
+version: '3.4'
+services:
+  aria2:
+    build:
+      context: ./aria2
+    ports:
+      - "6800:6800"
+
+  webui:
+    build:
+      context: ./webui
+      target: client
+    ports:
+      - "80:80"
