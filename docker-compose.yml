@@ -4,7 +4,7 @@ services:
     build:
       context: ./aria2
       args:
-        SECRET: ${SECRET}
+        ARIA2_SECRET: ${ARIA2_SECRET}
     ports:
       - "6800:6800"
 
@@ -13,6 +13,8 @@ services:
       context: ./webui
       target: client
       args:
-        SECRET: ${SECRET}
+        ARIA2_SECRET: ${ARIA2_SECRET}
+        HTPASSWD_USER: ${HTPASSWD_USER}
+        HTPASSWD_PASSWORD: ${HTPASSWD_PASSWORD}
     ports:
       - "80:80"

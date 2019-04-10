@@ -10,16 +10,24 @@ WORKDIR /webui-aria2
 
 RUN npm install
 
-ARG SECRET
+ARG ARIA2_SECRET
 COPY ./conf/configuration.js ./src/js/services/configuration.js
-COPY ./conf/secret.js ./src/js/services/secret.js
 RUN mv ./webpack.config.js ./webpack.config.base.js
 COPY ./conf/webpack.config.js ./webpack.config.js
 
 RUN npm run build
 
+FROM alpine as htpasswd
+
+ARG HTPASSWD_USER
+ARG HTPASSWD_PASSWORD
+
+RUN apk add --update apache2-utils
+RUN htpasswd -b -c htpasswd ${HTPASSWD_USER} ${HTPASSWD_PASSWORD}
+
 FROM nginx:stable AS client
 
+COPY --from=htpasswd htpasswd /etc/nginx/htpasswd
 COPY --from=build /webui-aria2/docs /var/www
 COPY ./conf/nginx.conf /etc/nginx/conf.d/default.conf
 
