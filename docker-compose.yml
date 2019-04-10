@@ -3,6 +3,8 @@ services:
   aria2:
     build:
       context: ./aria2
+      args:
+        SECRET: ${SECRET}
     ports:
       - "6800:6800"
 
@@ -10,5 +12,7 @@ services:
     build:
       context: ./webui
       target: client
+      args:
+        SECRET: ${SECRET}
     ports:
       - "80:80"

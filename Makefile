@@ -1,4 +1,5 @@
 start:
+	cp -n .env.dist .env
 	docker-compose up -d --force-recreate --build --remove-orphans
 
 stop:
