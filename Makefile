@@ -1,17 +1,27 @@
+UID = $(shell id -u)
+GID = $(shell id -g)
+COMPOSE = UID=${UID} GID=${GID} docker-compose
+
 start:
 	cp -n .env.dist .env
-	docker-compose up -d --force-recreate --build --remove-orphans
+	${COMPOSE} up -d --force-recreate --build --remove-orphans
 
 stop:
-	docker-compose stop
+	${COMPOSE} stop
 
 restart: stop start
 
 down:
-	docker-compose down --rmi all --volumes --remove-orphans
+	${COMPOSE} down --rmi all --volumes --remove-orphans
 
 ps:
-	docker-compose ps
+	${COMPOSE} ps
 
 logs:
-	docker-compose logs -f
+	${COMPOSE} logs -f
+
+sh.aria2:
+	${COMPOSE} exec aria2 sh
+
+sh.webui:
+	${COMPOSE} exec webui sh

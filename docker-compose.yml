@@ -4,7 +4,11 @@ services:
     build:
       context: ./aria2
       args:
+        UID: ${UID}
+        GID: ${GID}
         ARIA2_SECRET: ${ARIA2_SECRET}
+    volumes:
+      - ${DATA_DIR}:/home/aria2
     ports:
       - "6800:6800"
 
