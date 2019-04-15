@@ -13,6 +13,8 @@ RUN adduser -D -u ${UID} -G aria2 aria2
 
 COPY ./conf/aria2.conf /etc/aria2/aria2.conf
 
+VOLUME /home/aria2
+
 EXPOSE 6800
 
 CMD set -xe \

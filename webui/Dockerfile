@@ -28,7 +28,9 @@ RUN htpasswd -b -c htpasswd ${HTPASSWD_USER} ${HTPASSWD_PASSWORD}
 FROM nginx:stable AS client
 
 COPY --from=htpasswd htpasswd /etc/nginx/htpasswd
-COPY --from=build /webui-aria2/docs /var/www
+COPY --from=build /webui-aria2/docs /var/www/webui-aria2
 COPY ./conf/nginx.conf /etc/nginx/conf.d/default.conf
+
+VOLUME /var/www/downloads
 
 CMD nginx -g 'daemon off;'

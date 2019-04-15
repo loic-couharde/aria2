@@ -20,5 +20,7 @@ services:
         ARIA2_SECRET: ${ARIA2_SECRET}
         HTPASSWD_USER: ${HTPASSWD_USER}
         HTPASSWD_PASSWORD: ${HTPASSWD_PASSWORD}
+    volumes:
+      - ${DATA_DIR}:/var/www/downloads
     ports:
       - "80:80"
