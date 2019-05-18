@@ -10,7 +10,7 @@ export default angular
     host: location.protocol.startsWith("http") ? location.hostname : "localhost",
     path: "/jsonrpc",
     port: 6800,
-    encrypt: false,
+    encrypt: location.protocol.startsWith("https"),
     auth: {
       // either add the token field or the user and pass field, not both.
       token: process.env.ARIA2_SECRET

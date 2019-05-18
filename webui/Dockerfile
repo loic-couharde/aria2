@@ -1,4 +1,4 @@
-FROM node:alpine AS build
+FROM node:10-alpine AS build
 MAINTAINER Loïc Couharde <loic.couharde@gmail.com>
 
 RUN apk update
