@@ -10,7 +10,7 @@ services:
     volumes:
       - ${DATA_DIR}:/home/aria2
     ports:
-      - "6800:6800"
+      - "8080:6800"
 
   webui:
     build:
