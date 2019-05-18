@@ -9,8 +9,6 @@ services:
         ARIA2_SECRET: ${ARIA2_SECRET}
     volumes:
       - ${DATA_DIR}:/home/aria2
-    ports:
-      - "8080:6800"
 
   webui:
     build:
