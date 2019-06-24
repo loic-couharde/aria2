@@ -9,6 +9,7 @@ services:
         ARIA2_SECRET: ${ARIA2_SECRET}
     volumes:
       - ${DATA_DIR}:/home/aria2
+    restart: on-failure
 
   webui:
     build:
@@ -22,3 +23,4 @@ services:
       - ${DATA_DIR}:/var/www/downloads
     ports:
       - "80:80"
+    restart: on-failure

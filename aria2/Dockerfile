@@ -18,5 +18,5 @@ VOLUME /home/aria2
 EXPOSE 6800
 
 CMD set -xe \
-  && chown -R aria2:aria2 /home/aria2 \
+  && chown aria2:aria2 /home/aria2 \
   && su-exec aria2:aria2 aria2c --conf-path=/etc/aria2/aria2.conf --rpc-secret=${ARIA2_SECRET} --dir=/home/aria2
