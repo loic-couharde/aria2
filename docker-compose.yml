@@ -19,8 +19,10 @@ services:
         ARIA2_SECRET: ${ARIA2_SECRET}
         HTPASSWD_USER: ${HTPASSWD_USER}
         HTPASSWD_PASSWORD: ${HTPASSWD_PASSWORD}
+        CERT_DOMAIN: ${CERT_DOMAIN}
+        CERT_PASSWORD: ${CERT_PASSWORD}
     volumes:
       - ${DATA_DIR}:/var/www/downloads
     ports:
-      - "80:80"
+      - "443:443"
     restart: on-failure
