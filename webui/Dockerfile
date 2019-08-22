@@ -9,12 +9,6 @@ RUN git clone https://github.com/ziahamza/webui-aria2.git
 WORKDIR /webui-aria2
 
 RUN npm install
-
-ARG ARIA2_SECRET
-COPY ./conf/configuration.js ./src/js/services/configuration.js
-RUN mv ./webpack.config.js ./webpack.config.base.js
-COPY ./conf/webpack.config.js ./webpack.config.js
-
 RUN npm run build
 
 FROM alpine as htpasswd

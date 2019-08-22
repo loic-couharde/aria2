@@ -14,6 +14,8 @@ restart: stop start
 down:
 	${COMPOSE} down --rmi all --volumes --remove-orphans
 
+reset: down start
+
 ps:
 	${COMPOSE} ps
 
