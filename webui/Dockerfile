@@ -4,7 +4,8 @@ MAINTAINER Loïc Couharde <loic.couharde@gmail.com>
 RUN apk update
 RUN apk add git python2 make g++
 
-RUN git clone https://github.com/ziahamza/webui-aria2.git
+ADD https://api.github.com/repos/ziahamza/webui-aria2/git/refs/heads/master version.json
+RUN git clone https://github.com/ziahamza/webui-aria2.git && rm version.json
 
 WORKDIR /webui-aria2
 
